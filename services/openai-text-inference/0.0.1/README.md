@@ -12,21 +12,24 @@ This service enables querying the OpenAI [completions](https://platform.openai.c
 ### Configurations
 
 - **OPENAI_API_KEY**: The OpenAI API Key
+- NUM_WORKERS (optional): The number of workers to use with the server.
+    - Defaults to `2`.
 
 ### Use it
 
-To use this recipe, include the following in your `config.json` containers:
+To use this recipe, include the following in your `config.json` [containers](https://docs.ritual.net/infernet/node/configuration#containers-arraycontainer_spec):
 
 ```js
 {
-    "recipe": "openai-text-inference:0.0.1",
+    "recipe_id": "openai-text-inference_0.0.1",
     "recipe_vars": {
         "OPENAI_API_KEY": <your_value_here>,
+        "NUM_WORKERS": <your_value_here>, // OPTIONAL
     }
 }
 ```
 
-Your [configurations](#configurations) should be included in `recipe_vars`.
+**Note** that your [configurations](#configurations) must be included in `recipe_vars`.
 
 ### Input Data
 

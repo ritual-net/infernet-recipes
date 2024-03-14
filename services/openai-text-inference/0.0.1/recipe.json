@@ -1,11 +1,14 @@
 {
-    "id": "openai-text-inference:0.0.1",
+    "id": "openai-text-inference_0.0.1",
     "image": "ritualnetwork/llm_inference_service:0.0.1",
     "description": "OpenAI completions and embeddings service",
-    "command": "--bind=0.0.0.0:3000 --workers=2",
+    "command": "--bind=0.0.0.0:3000 --workers=${NUM_WORKERS}",
     "env": {
         "OPENAI_API_KEY": "${OPENAI_API_KEY}",
         "LLM_INF_WORKFLOW_CLASS": "ml.workflows.inference.css_inference_workflow.CSSInferenceWorkflow",
         "LLM_INF_WORKFLOW_POSITIONAL_ARGS": "[\"OPENAI\", \"completions\"]"
+    },
+    "defaults": {
+        "NUM_WORKERS": 2
     }
 }
