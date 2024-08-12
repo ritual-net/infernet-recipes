@@ -1,0 +1,16 @@
+{
+    "id": "css-inference:1.0.0",
+    "image": "ritualnetwork/css_inference_service:1.0.0",
+    "description": "Closed Source Inference Service",
+    "command": "--bind=0.0.0.0:3000 --workers=${NUM_WORKERS}",
+    "env": {
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+        "GOOSEAI_API_KEY": "${GOOSEAI_API_KEY}",
+        "PERPLEXITYAI_API_KEY": "${PERPLEXITYAI_API_KEY}",
+        "RETRY_PARAMS": "${RETRY_PARAMS}"
+    },
+    "defaults": {
+        "NUM_WORKERS": 2
+    },
+    "required": []
+}

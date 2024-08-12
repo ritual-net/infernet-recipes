@@ -1,0 +1,22 @@
+{
+    "id": "tgi-client-inference:1.0.0",
+    "image": "ritualnetwork/tgi_client_inference_service:1.0.0",
+    "description": "TGI Client Inference Service",
+    "command": "--bind=0.0.0.0:3000 --workers=${NUM_WORKERS}",
+    "env": {
+        "TGI_INF_WORKFLOW_POSITIONAL_ARGS": [
+            "${TGI_SERVICE_URL}",
+            "${CONNECTION_TIMEOUT}",
+            {
+                "Authorization": "${HF_TOKEN}"
+            }
+        ],
+        "TGI_INF_WORKFLOW_KW_ARGS": "${RETRY_PARAMS}"
+    },
+    "defaults": {
+        "NUM_WORKERS": 2,
+        "CONNECTION_TIMEOUT": 30,
+        "RETRY_PARAMS": "{\"retry_params\": {\"tries\": 3, \"delay\": 3, \"backoff\": 2, \"max_delay\": 10, \"jitter\": [0.5, 1.5]}}"
+    },
+    "required": ["TGI_SERVICE_URL", "HF_TOKEN"]
+}

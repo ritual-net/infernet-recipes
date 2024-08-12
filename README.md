@@ -19,7 +19,7 @@ To ensure consistent identification and configuration of official Infernet-compa
 
 ### What is a Recipe?
 
-Recipes are `json` files used to [configure containers](https://docs.ritual.net/infernet/node/configuration#containers-arraycontainer_spec) (i.e. _services_) on an [Infernet Node](https://docs.ritual.net/infernet/node/introduction). They are identified by a `service` and a `version`.
+Recipes are `json` files used to [configure containers](https://docs.ritual.net/infernet/node/configuration/v1_1_0#containers-arraycontainer_spec) (i.e. _services_) on an [Infernet Node](https://docs.ritual.net/infernet/node/introduction). They are identified by a `name` and a `version`.
 
 #### Rules
 
@@ -39,4 +39,4 @@ To use a recipe, you must specify:
 - `recipe_id` (`string`): The Service ID of the desired service, i.e. `<name>_<version>`.
 - `recipe_vars` (`object`, optional): The variables to substitute for any templated recipe variables.
 
-See Infernet's [container configuration](https://docs.ritual.net/infernet/node/configuration#container_spec-object) docs for complete configuration instructions.
+See Infernet's [container configuration](https://docs.ritual.net/infernet/node/configuration/v1_1_0#container_spec-object) docs for complete configuration instructions.
