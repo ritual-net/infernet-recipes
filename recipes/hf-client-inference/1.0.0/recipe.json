@@ -1,16 +1,34 @@
 {
-    "id": "hf-client-inference:1.0.0",
-    "image": "ritualnetwork/hf_client_inference_service:1.0.0",
-    "description": "HuggingFace Client Inference Service",
-    "command": "--bind=0.0.0.0:3000 --workers=${NUM_WORKERS}",
-    "env": {
-        "HF_TOKEN": "${HF_TOKEN}",
-        "TEST_ENV": "${TEST_ENV}"
+    "config": {
+        "id": "hf-client-inference:1.0.0",
+        "image": "ritualnetwork/hf_client_inference_service:1.0.0",
+        "description": "HuggingFace Client Inference Service",
+        "command": "--bind=0.0.0.0:3000 --workers=${NUM_WORKERS}",
+        "env": {
+            "HF_TOKEN": "${HF_TOKEN}",
+            "TEST_ENV": "${TEST_ENV}"
+        }
     },
-    "defaults": {
-        "NUM_WORKERS": 2,
-        "TEST_ENV": "false"
-
-    },
-    "required": ["HF_TOKEN"]
+    "inputs": [
+        {
+            "id": "HF_TOKEN",
+            "description": "The Hugging Face API token.",
+            "type": "string",
+            "required": true
+        },
+        {
+            "id": "TEST_ENV",
+            "description": "Whether this is a testing instance.",
+            "type": "string",
+            "required": false,
+            "default": "false"
+        },
+        {
+            "id": "NUM_WORKERS",
+            "description": "The number of workers to use with the server.",
+            "type": "integer",
+            "required": false,
+            "default": 2
+        }
+    ]
 }

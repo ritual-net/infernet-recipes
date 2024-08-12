@@ -1,22 +1,53 @@
 {
-    "id": "tgi-client-inference:1.0.0",
-    "image": "ritualnetwork/tgi_client_inference_service:1.0.0",
-    "description": "TGI Client Inference Service",
-    "command": "--bind=0.0.0.0:3000 --workers=${NUM_WORKERS}",
-    "env": {
-        "TGI_INF_WORKFLOW_POSITIONAL_ARGS": [
-            "${TGI_SERVICE_URL}",
-            "${CONNECTION_TIMEOUT}",
-            {
-                "Authorization": "${HF_TOKEN}"
-            }
-        ],
-        "TGI_INF_WORKFLOW_KW_ARGS": "${RETRY_PARAMS}"
+    "config": {
+        "id": "tgi-client-inference:1.0.0",
+        "image": "ritualnetwork/tgi_client_inference_service:1.0.0",
+        "description": "TGI Client Inference Service",
+        "command": "--bind=0.0.0.0:3000 --workers=${NUM_WORKERS}",
+        "env": {
+            "TGI_INF_WORKFLOW_POSITIONAL_ARGS": [
+                "${TGI_SERVICE_URL}",
+                "${CONNECTION_TIMEOUT}",
+                {
+                    "Authorization": "${HF_TOKEN}"
+                }
+            ],
+            "TGI_INF_WORKFLOW_KW_ARGS": "${RETRY_PARAMS}"
+        }
     },
-    "defaults": {
-        "NUM_WORKERS": 2,
-        "CONNECTION_TIMEOUT": 30,
-        "RETRY_PARAMS": "{\"retry_params\": {\"tries\": 3, \"delay\": 3, \"backoff\": 2, \"max_delay\": 10, \"jitter\": [0.5, 1.5]}}"
-    },
-    "required": ["TGI_SERVICE_URL", "HF_TOKEN"]
+    "inputs": [
+        {
+            "id": "TGI_SERVICE_URL",
+            "description": "The URL of the TGI service to connect to.",
+            "type": "string",
+            "required": true
+        },
+        {
+            "id": "HF_TOKEN",
+            "description": "The Hugging Face API token.",
+            "type": "string",
+            "required": true
+        },
+        {
+            "id": "CONNECTION_TIMEOUT",
+            "description": "The connection timeout in seconds.",
+            "type": "integer",
+            "required": false,
+            "default": 30
+        },
+        {
+            "id": "RETRY_PARAMS",
+            "description": "The retry parameters as a stringified JSON object.",
+            "type": "string",
+            "required": false,
+            "default": "{\"retry_params\": {\"tries\": 3, \"delay\": 1, \"backoff\": 2, \"max_delay\": 10, \"jitter\": [0.5, 1.5]}}"
+        },
+        {
+            "id": "NUM_WORKERS",
+            "description": "The number of workers to use with the server.",
+            "type": "integer",
+            "required": false,
+            "default": 2
+        }
+    ]
 }
