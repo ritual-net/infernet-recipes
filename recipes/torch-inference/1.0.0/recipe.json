@@ -7,7 +7,6 @@
         "env": {
             "LOAD_ARGS": "${LOAD_ARGS}",
             "MODEL_SOURCE": "${MODEL_SOURCE}",
-            "TEST_ENV": "${TEST_ENV}",
             "USE_JIT": "${USE_JIT}"
         }
     },
@@ -23,13 +22,6 @@
             "description": "Arguments to load model with, as a stringified JSON object. Used for preloading a model.",
             "type": "string",
             "required": false
-        },
-        {
-            "id": "TEST_ENV",
-            "description": "Whether this is a testing instance.",
-            "type": "string",
-            "required": false,
-            "default": "false"
         },
         {
             "id": "USE_JIT",

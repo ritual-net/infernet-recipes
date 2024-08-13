@@ -6,8 +6,7 @@
         "command": "--bind=0.0.0.0:3000 --workers=${NUM_WORKERS}",
         "env": {
             "MODEL_SOURCE": "${MODEL_SOURCE}",
-            "LOAD_ARGS": "${LOAD_ARGS}",
-            "TEST_ENV": "${TEST_ENV}"
+            "LOAD_ARGS": "${LOAD_ARGS}"
         }
     },
     "inputs": [
@@ -22,13 +21,6 @@
             "description": "Arguments to load model with, as a stringified JSON object. Used for preloading a model.",
             "type": "string",
             "required": false
-        },
-        {
-            "id": "TEST_ENV",
-            "description": "Whether this is a testing instance.",
-            "type": "string",
-            "required": false,
-            "default": "false"
         },
         {
             "id": "NUM_WORKERS",

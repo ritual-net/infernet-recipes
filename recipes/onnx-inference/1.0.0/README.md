@@ -16,7 +16,6 @@ To use this recipe, include the following in your `config.json` [containers](htt
     "recipe_vars": {
         "MODEL_SOURCE": <your_value_here>, // OPTIONAL
         "LOAD_ARGS": <your_value_here>,    // OPTIONAL
-        "TEST_ENV": <your_value_here>,     // OPTIONAL
         "NUM_WORKERS": <your_value_here>,  // OPTIONAL
     }
 }

@@ -15,7 +15,6 @@ To use this recipe, include the following in your `config.json` [containers](htt
     "recipe_id": "hf-client-inference_1.0.0",
     "recipe_vars": {
         "HF_TOKEN": <your_value_here>,
-        "TEST_ENV": <your_value_here>,    // OPTIONAL
         "NUM_WORKERS": <your_value_here>, // OPTIONAL
     }
 }

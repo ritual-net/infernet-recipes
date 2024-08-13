@@ -5,8 +5,7 @@
         "description": "HuggingFace Client Inference Service",
         "command": "--bind=0.0.0.0:3000 --workers=${NUM_WORKERS}",
         "env": {
-            "HF_TOKEN": "${HF_TOKEN}",
-            "TEST_ENV": "${TEST_ENV}"
+            "HF_TOKEN": "${HF_TOKEN}"
         }
     },
     "inputs": [
@@ -15,13 +14,6 @@
             "description": "The Hugging Face API token.",
             "type": "string",
             "required": true
-        },
-        {
-            "id": "TEST_ENV",
-            "description": "Whether this is a testing instance.",
-            "type": "string",
-            "required": false,
-            "default": "false"
         },
         {
             "id": "NUM_WORKERS",
