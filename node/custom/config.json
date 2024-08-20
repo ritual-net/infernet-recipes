@@ -1,35 +1,50 @@
 {
-	"manage_containers": true,
-	"startup_wait": 5,
-	"server": {
-	  "port": 4000
-	},
-    "chain": {
-        "enabled": true,
-        "trail_head_blocks": 3,
-        "rpc_url": "",
-        "registry_address": "",
-        "wallet": {
-          "max_gas_limit": 4000000,
-          "private_key": "",
-          "payment_address": "",
-          "allowed_sim_errors": []
-        },
-        "snapshot_sync": {
-          "sleep": 1,
-          "batch_size": 1800,
-          "starting_sub_id" : 0
-        }
+  "config": {
+    "manage_containers": true,
+    "startup_wait": 5,
+    "server": {
+      "port": 4000
     },
-	"docker": {
-	  "username": "",
-	  "password": ""
-	},
-	"redis": {
-	  "host": "redis",
-	  "port": 6379
-	},
-	"forward_stats": false,
-	"containers": []
-  }
-  
+      "chain": {
+          "enabled": true,
+          "trail_head_blocks": 3,
+          "rpc_url": "",
+          "registry_address": "",
+          "wallet": {
+            "max_gas_limit": 4000000,
+            "private_key": "",
+            "payment_address": "",
+            "allowed_sim_errors": []
+          },
+          "snapshot_sync": {
+            "sleep": 1,
+            "batch_size": 1800,
+            "starting_sub_id" : 0
+          }
+      },
+    "docker": {
+      "username": "",
+      "password": ""
+    },
+    "redis": {
+      "host": "redis",
+      "port": 6379
+    },
+    "forward_stats": false,
+    "containers": []
+  },
+  "inputs": [
+    {
+      "path": "chain.wallet.private_key",
+      "description": "Private key for the wallet",
+      "type": "string",
+      "required": true
+    },
+    {
+      "path": "chain.wallet.payment_address",
+      "description": "Payment address for the wallet",
+      "type": "string",
+      "required": false
+    }
+  ]
+}
