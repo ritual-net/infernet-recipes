@@ -65,9 +65,9 @@ services:
       - network
     container_name: infernet-anvil
 
-  networks:
-    network:
+networks:
+  network:
 
-  volumes:
-    node-logs:
-    redis-data:
+volumes:
+  node-logs:
+  redis-data:
