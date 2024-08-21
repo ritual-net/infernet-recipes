@@ -7,9 +7,9 @@
     },
       "chain": {
           "enabled": true,
-          "trail_head_blocks": 1,
+          "trail_head_blocks": 3,
           "rpc_url": "https://ethereum-rpc.publicnode.com",
-          "registry_address": "0x663F3ad617193148711d28f5334eE4Ed07016602",
+          "registry_address": "0x3B1554f346DFe5c482Bb4BA31b880c1C18412170",
           "wallet": {
               "max_gas_limit": 5000000,
               "private_key": "",
@@ -17,8 +17,8 @@
               "allowed_sim_errors": []
           },
           "snapshot_sync": {
-              "sleep": 1.5,
-              "batch_size": 50,
+              "sleep": 1,
+              "batch_size": 1800,
               "starting_sub_id": 0
           }
       },
