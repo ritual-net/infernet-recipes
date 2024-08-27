@@ -21,6 +21,7 @@ services:
             capabilities: [gpu]
     depends_on:
       - redis
+      - infernet-anvil
     restart:
       on-failure
     extra_hosts:

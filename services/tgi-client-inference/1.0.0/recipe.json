@@ -11,25 +11,27 @@
                 {
                     "Authorization": "${HF_TOKEN}"
                 }
-            ],
-            "TGI_INF_WORKFLOW_KW_ARGS": "${RETRY_PARAMS}"
+            ]
         }
     },
     "inputs": [
         {
             "id": "TGI_SERVICE_URL",
+            "path": "env.TGI_INF_WORKFLOW_POSITIONAL_ARGS#TGI_SERVICE_URL",
             "description": "The URL of the TGI service to connect to.",
             "type": "string",
             "required": true
         },
         {
             "id": "HF_TOKEN",
+            "path": "env.TGI_INF_WORKFLOW_POSITIONAL_ARGS#HF_TOKEN",
             "description": "The Hugging Face API token.",
             "type": "string",
             "required": true
         },
         {
             "id": "CONNECTION_TIMEOUT",
+            "path": "env.TGI_INF_WORKFLOW_POSITIONAL_ARGS#CONNECTION_TIMEOUT",
             "description": "The connection timeout in seconds.",
             "type": "integer",
             "required": false,
@@ -37,6 +39,7 @@
         },
         {
             "id": "RETRY_PARAMS",
+            "path": "env.TGI_INF_WORKFLOW_KW_ARGS",
             "description": "The retry parameters as a stringified JSON object.",
             "type": "string",
             "required": false,
@@ -44,6 +47,7 @@
         },
         {
             "id": "NUM_WORKERS",
+            "path": "command#NUM_WORKERS",
             "description": "The number of workers to use with the server.",
             "type": "integer",
             "required": false,

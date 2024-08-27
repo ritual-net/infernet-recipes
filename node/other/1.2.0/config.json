@@ -5,23 +5,23 @@
     "server": {
       "port": 4000
     },
-      "chain": {
-          "enabled": true,
-          "trail_head_blocks": 3,
-          "rpc_url": "",
-          "registry_address": "",
-          "wallet": {
-            "max_gas_limit": 4000000,
-            "private_key": "",
-            "payment_address": "",
-            "allowed_sim_errors": []
-          },
-          "snapshot_sync": {
-            "sleep": 1,
-            "batch_size": 1800,
-            "starting_sub_id" : 0
-          }
-      },
+    "chain": {
+        "enabled": true,
+        "trail_head_blocks": 3,
+        "rpc_url": "",
+        "registry_address": "",
+        "wallet": {
+          "max_gas_limit": 4000000,
+          "private_key": "",
+          "payment_address": "",
+          "allowed_sim_errors": []
+        },
+        "snapshot_sync": {
+          "sleep": 1,
+          "batch_size": 1800,
+          "starting_sub_id" : 0
+        }
+    },
     "docker": {
       "username": "",
       "password": ""
@@ -35,12 +35,14 @@
   },
   "inputs": [
     {
+      "id": "private_key",
       "path": "chain.wallet.private_key",
       "description": "Private key for the wallet",
       "type": "string",
       "required": true
     },
     {
+      "id": "payment_address",
       "path": "chain.wallet.payment_address",
       "description": "Payment address for the wallet",
       "type": "string",

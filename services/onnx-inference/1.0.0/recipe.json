@@ -1,37 +1,29 @@
 {
     "config": {
-        "id": "torch-inference:1.0.0",
-        "image": "ritualnetwork/torch_inference_service:1.0.0",
-        "description": "PyTorch Inference Service",
+        "id": "onnx-inference:1.0.0",
+        "image": "ritualnetwork/onnx_inference_service:1.0.0",
+        "description": "ONNX Inference Service",
         "command": "--bind=0.0.0.0:3000 --workers=${NUM_WORKERS}",
-        "env": {
-            "LOAD_ARGS": "${LOAD_ARGS}",
-            "MODEL_SOURCE": "${MODEL_SOURCE}",
-            "USE_JIT": "${USE_JIT}"
-        }
+        "env": {}
     },
     "inputs": [
         {
             "id": "MODEL_SOURCE",
+            "path": "env.MODEL_SOURCE",
             "description": "The source of the model to load. Used for preloading a model.",
             "type": "string",
             "required": false
         },
         {
             "id": "LOAD_ARGS",
+            "path": "env.LOAD_ARGS",
             "description": "Arguments to load model with, as a stringified JSON object. Used for preloading a model.",
             "type": "string",
             "required": false
         },
         {
-            "id": "USE_JIT",
-            "description": "Whether to use JIT for model loading.",
-            "type": "string",
-            "required": false,
-            "default": "false"
-        },
-        {
             "id": "NUM_WORKERS",
+            "path": "command#NUM_WORKERS",
             "description": "The number of workers to use with the server.",
             "type": "integer",
             "required": false,

@@ -4,34 +4,33 @@
         "image": "ritualnetwork/css_inference_service:1.0.0",
         "description": "Closed Source Inference Service",
         "command": "--bind=0.0.0.0:3000 --workers=${NUM_WORKERS}",
-        "env": {
-            "OPENAI_API_KEY": "${OPENAI_API_KEY}",
-            "GOOSEAI_API_KEY": "${GOOSEAI_API_KEY}",
-            "PERPLEXITYAI_API_KEY": "${PERPLEXITYAI_API_KEY}",
-            "RETRY_PARAMS": "${RETRY_PARAMS}"
-        }
+        "env": {}
     },
     "inputs": [
         {
             "id": "OPENAI_API_KEY",
+            "path": "env.OPENAI_API_KEY",
             "description": "The OpenAI API key.",
             "type": "string",
             "required": false
         },
         {
             "id": "GOOSEAI_API_KEY",
+            "path": "env.GOOSEAI_API_KEY",
             "description": "The GooseAI API key.",
             "type": "string",
             "required": false
         },
         {
             "id": "PERPLEXITYAI_API_KEY",
+            "path": "env.PERPLEXITYAI_API_KEY",
             "description": "The PerplexityAI API key.",
             "type": "string",
             "required": false
         },
         {
             "id": "RETRY_PARAMS",
+            "path": "env.RETRY_PARAMS",
             "description": "The retry parameters as a stringified JSON object.",
             "type": "string",
             "required": false,
@@ -39,9 +38,11 @@
         },
         {
             "id": "NUM_WORKERS",
+            "path": "command#NUM_WORKERS",
             "description": "The number of workers to use with the server.",
             "type": "integer",
-            "required": false
+            "required": false,
+            "default": 2
         }
     ]
 }
