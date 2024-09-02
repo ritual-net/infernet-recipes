@@ -22,10 +22,6 @@
         "starting_sub_id" : 0
       }
     },
-    "docker": {
-      "username": "",
-      "password": ""
-    },
     "redis": {
       "host": "redis",
       "port": 6379

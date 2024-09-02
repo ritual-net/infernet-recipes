@@ -6,7 +6,7 @@
       "port": 4000
     },
     "chain": {
-      "enabled": true,
+      "enabled": false,
       "trail_head_blocks": 3,
       "rpc_url": "",
       "registry_address": "",
@@ -22,10 +22,6 @@
         "starting_sub_id" : 0
       }
     },
-    "docker": {
-      "username": "",
-      "password": ""
-    },
     "redis": {
       "host": "redis",
       "port": 6379
@@ -33,20 +29,5 @@
     "forward_stats": false,
     "containers": []
   },
-  "inputs": [
-    {
-      "id": "private_key",
-      "path": "chain.wallet.private_key",
-      "description": "Private key for the wallet",
-      "type": "string",
-      "required": true
-    },
-    {
-      "id": "payment_address",
-      "path": "chain.wallet.payment_address",
-      "description": "Payment address for the wallet",
-      "type": "string",
-      "required": false
-    }
-  ]
+  "inputs": []
 }
