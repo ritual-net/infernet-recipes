@@ -1,10 +1,8 @@
 {
   "config": {
+    "forward_stats": false,
     "manage_containers": true,
-    "startup_wait": 5,
-    "server": {
-      "port": 4000
-    },
+    "startup_wait": 1.0,
     "chain": {
       "enabled": false,
       "trail_head_blocks": 3,
@@ -19,14 +17,26 @@
       "snapshot_sync": {
         "sleep": 1,
         "batch_size": 1800,
-        "starting_sub_id" : 0
+        "starting_sub_id": 0,
+        "sync_period": 1
       }
+    },
+    "log": {
+      "path": "infernet_node.log",
+      "max_file_size": 1073741824,
+      "backup_count": 2
     },
     "redis": {
       "host": "redis",
       "port": 6379
     },
-    "forward_stats": false,
+    "server": {
+      "port": 4000,
+      "rate_limit": {
+        "num_requests": 60,
+        "period": 60
+      }
+    },
     "containers": []
   },
   "inputs": []

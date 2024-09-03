@@ -4,7 +4,15 @@
         "image": "ritualnetwork/onnx_inference_service:1.0.0",
         "description": "ONNX Inference Service",
         "command": "--bind=0.0.0.0:3000 --workers=${NUM_WORKERS}",
-        "env": {}
+        "env": {},
+        "external": true,
+        "gpu": false,
+        "volumes": [],
+        "allowed_addresses": [],
+        "allowed_delegate_addresses": [],
+        "allowed_ips": [],
+        "accepted_payments": [],
+        "generates_proofs": false
     },
     "inputs": [
         {
