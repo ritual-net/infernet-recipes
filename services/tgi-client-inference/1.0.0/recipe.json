@@ -1,6 +1,6 @@
 {
     "config": {
-        "id": "tgi-client-inference:1.0.0",
+        "id": "tgi-client-inference-1.0.0",
         "image": "ritualnetwork/tgi_client_inference_service:1.0.0",
         "description": "TGI Client Inference Service",
         "command": "--bind=0.0.0.0:3000 --workers=${NUM_WORKERS}",

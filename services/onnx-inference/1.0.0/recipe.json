@@ -1,6 +1,6 @@
 {
     "config": {
-        "id": "onnx-inference:1.0.0",
+        "id": "onnx-inference-1.0.0",
         "image": "ritualnetwork/onnx_inference_service:1.0.0",
         "description": "ONNX Inference Service",
         "command": "--bind=0.0.0.0:3000 --workers=${NUM_WORKERS}",

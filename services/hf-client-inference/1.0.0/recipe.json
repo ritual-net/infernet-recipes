@@ -1,6 +1,6 @@
 {
     "config": {
-        "id": "hf-client-inference:1.0.0",
+        "id": "hf-client-inference-1.0.0",
         "image": "ritualnetwork/hf_client_inference_service:1.0.0",
         "description": "HuggingFace Client Inference Service",
         "command": "--bind=0.0.0.0:3000 --workers=${NUM_WORKERS}",
