@@ -1,42 +1,57 @@
-# Infernet Services Registry
+# Infernet Recipes
 
-This is a collection of [recipes](#what-is-a-recipe) for running [Infernet](https://docs.ritual.net/infernet/about)-compatible services. This repo aims to:
-  1. Standardize service IDs across the Infernet network.
-  2. Document service descriptions, configurations, and data schemas.
-  3. Make it trivial to configure and run services on an [Infernet Node](https://docs.ritual.net/infernet/node/introduction) via [recipes](#what-is-a-recipe).
+This is a collection of [recipes](#what-is-a-recipe) that aims to simplify:
+  1. Configuring and running an [Infernet Node](https://docs.ritual.net/infernet/node/introduction).
+  2. Configuring and running [services](https://infernet-services.docs.ritual.net/) on an Infernet Node.
 
-To ensure consistent identification and configuration of official Infernet-compatible services across the network, Infernet Nodes **enforce** the use of recipes for official services. As such, you cannot run custom containers with an ID matching any of the official services under the `services/` directory; and you can ONLY run an official service using a [recipe](#what-is-a-recipe).
+## Node Recipes
 
-### Structure
+Node recipes reside under the `node/` directory.
+- Sub-directories `node/**` represent different connected chain configurations.
+- Sub-directories under each chain (e.g. `node/base/**`) represent Infernet Node versions.
+- Each directory `node/<chain>/<version>/` contains a `config.json`, the node recipe file, along with auxiliary files required for node deployment.
 
-- Services are represented by directories under `services/`, and are versioned using subdirectories. 
-- Service IDs:
-  - **Consist of** a `name` and a `version`, in the format `<name>_<version>`, corresponding to the directory `services/<name>/<version>` within this repo.
-  - **Are reserved**, i.e. they uniquely describe a service across the [Infernet](https://docs.ritual.net/infernet/about) network.
-- Each `<name>/<version>/` is a directory that contains:
-    - A `README.md` with the service description, configuration details, and input data structure.
-    - A `recipe.json`, i.e. the recipe for running the Infernet-compatible service.
+## Service recipes
+
+Service (container) recipes reside under `services/`.
+- Sub-directories `services/**` represent different Infernet-compatible [services](https://infernet-services.docs.ritual.net/).
+- Sub-directories under each service (e.g. `services/onnx-inference/**`) represent service versions.
+- Each directory `services/<service>/<version>/` contains a `recipe.json`, the service recipe file, along with a README with more details.
 
 ### What is a Recipe?
 
-Recipes are `json` files used to [configure containers](https://docs.ritual.net/infernet/node/configuration/v1_1_0#containers-arraycontainer_spec) (i.e. _services_) on an [Infernet Node](https://docs.ritual.net/infernet/node/introduction). They are identified by a `name` and a `version`.
+Recipes are `json` files that contain:
+- A `config` section, which is the (incomplete) configuration object with several required and/or optional fields pre-specified.
+- An `inputs` section, which describes the user inputs necessary to transform the `config` into a complete configuration object. See [Inputs](#inputs).
 
-#### Rules
+#### Inputs
 
-- Recipes **must** contain:
-  - `id` (`string`): Service ID.
-  - `image` (`string`): [Dockerhub](https://hub.docker.com) image ID.
-- Recipes **may** contain:
-  - `command` (`string`): Command to run the container with.
-  - `env` (`object`): Environment variables to pass into the container.
-  - `description` (`string`): A brief description of the service.
-- The above _may_ contain __templated__ variables that must be specified by the node operator, in the form of `${TEMPLATED_VARIABLE}` (see `recipe_vars` below).
-  - Some templated variables are _required_, others may be optional and defaulted.
+Recipe inputs are specified by the following fields:
+- `id` (string): The ID of the variable.
+- `path` (string): The path in the `config` object where the variable belongs. See [Path Rules](#path-rules).
+- `type` (string): The type of the variable.
+- `required` (boolean): Whether user input is required.
+- `default` (any, _optional_): The default value of the variable, if applicable.
+- `description` (string, _optional_): The description of the variable.
 
-#### Usage
+#### Path Rules
 
-To use a recipe, you must specify:
-- `recipe_id` (`string`): The Service ID of the desired service, i.e. `<name>_<version>`.
-- `recipe_vars` (`object`, optional): The variables to substitute for any templated recipe variables.
+Object properties within the `config` object are specified as paths joined by `.` (dots). For example, path
 
-See Infernet's [container configuration](https://docs.ritual.net/infernet/node/configuration/v1_1_0#container_spec-object) docs for complete configuration instructions.
+```js
+chain.wallet.private_key
+```
+refers to
+```js
+config["chain"]["wallet"]["private_key"]
+```
+
+**Partial substitutions** are also possible with the `#`. For example, path
+```js
+command#NUM_WORKERS
+```
+
+refers to the substring `${NUM_WORKERS}` within
+```js
+config["command"]
+```

@@ -1,10 +1,18 @@
 {
     "config": {
-        "id": "torch-inference:1.0.0",
+        "id": "torch-inference-1.0.0",
         "image": "ritualnetwork/torch_inference_service:1.0.0",
         "description": "PyTorch Inference Service",
         "command": "--bind=0.0.0.0:3000 --workers=${NUM_WORKERS}",
-        "env": {}
+        "env": {},
+        "external": true,
+        "gpu": false,
+        "volumes": [],
+        "allowed_addresses": [],
+        "allowed_delegate_addresses": [],
+        "allowed_ips": [],
+        "accepted_payments": {},
+        "generates_proofs": false
     },
     "inputs": [
         {
