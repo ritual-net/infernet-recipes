@@ -19,7 +19,7 @@
         "allowed_addresses": [],
         "allowed_delegate_addresses": [],
         "allowed_ips": [],
-        "accepted_payments": [],
+        "accepted_payments": {},
         "generates_proofs": false
     },
     "inputs": [
