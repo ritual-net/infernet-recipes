@@ -17,6 +17,7 @@ To use this recipe, include the following in your `config.json` [containers](htt
         "TGI_SERVICE_URL": <your_value_here>,
         "HF_TOKEN": <your_value_here>,
         "CONNECTION_TIMEOUT": <your_value_here>,  // OPTIONAL
+        "RETRY_PARAMS": <your_value_here>,        // OPTIONAL
         "NUM_WORKERS": <your_value_here>,         // OPTIONAL
     }
 }

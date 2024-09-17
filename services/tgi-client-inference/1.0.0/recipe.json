@@ -40,6 +40,14 @@
             "default": 30
         },
         {
+            "id": "RETRY_PARAMS",
+            "path": "env.TGI_INF_WORKFLOW_KW_ARGS",
+            "description": "The retry parameters as a stringified JSON object.",
+            "type": "string",
+            "required": false,
+            "default": "{\"retry_params\": {\"tries\": 3, \"delay\": 1, \"backoff\": 2, \"max_delay\": 10, \"jitter\": [0.5, 1.5]}}"
+        },
+        {
             "id": "NUM_WORKERS",
             "path": "command#NUM_WORKERS",
             "description": "The number of workers to use with the server.",
