@@ -5,13 +5,7 @@
         "description": "TGI Client Inference Service",
         "command": "--bind=0.0.0.0:3000 --workers=${NUM_WORKERS}",
         "env": {
-            "TGI_INF_WORKFLOW_POSITIONAL_ARGS": [
-                "${TGI_SERVICE_URL}",
-                "${CONNECTION_TIMEOUT}",
-                {
-                    "Authorization": "${HF_TOKEN}"
-                }
-            ]
+            "TGI_INF_WORKFLOW_POSITIONAL_ARGS": "[\"${TGI_SERVICE_URL}\", ${CONNECTION_TIMEOUT}, {\"Authorization\": \"Bearer ${HF_TOKEN}\"}]"
         },
         "external": true,
         "gpu": false,
