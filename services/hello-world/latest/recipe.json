@@ -1,0 +1,18 @@
+{
+    "config": {
+        "id": "hello-world",
+        "image": "ritualnetwork/hello-world-infernet:latest",
+        "description": "Hello World Service",
+        "command": "--bind=0.0.0.0:3000 --workers=2",
+        "env": {},
+        "external": true,
+        "gpu": false,
+        "volumes": [],
+        "allowed_addresses": [],
+        "allowed_delegate_addresses": [],
+        "allowed_ips": [],
+        "accepted_payments": {},
+        "generates_proofs": false
+    },
+    "inputs": []
+}
