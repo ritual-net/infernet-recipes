@@ -1,11 +1,14 @@
 {
     "config": {
-        "id": "tgi-client-inference-1.0.0",
-        "image": "ritualnetwork/tgi_client_inference_service:1.0.0",
+        "id": "tgi-client-inference-2.0.0",
+        "image": "ritualnetwork/tgi_client_inference_service:2.0.0",
         "description": "TGI Client Inference Service",
         "command": "--bind=0.0.0.0:3000 --workers=${NUM_WORKERS}",
         "env": {
-            "TGI_INF_WORKFLOW_POSITIONAL_ARGS": "[\"${TGI_SERVICE_URL}\", ${CONNECTION_TIMEOUT}, {\"Authorization\": \"Bearer ${HF_TOKEN}\"}]"
+            "TGI_INF_WORKFLOW_POSITIONAL_ARGS": [
+                "${SERVICE_URL}",
+                "${CONNECTION_TIMEOUT}"
+            ]
         },
         "external": true,
         "gpu": false,
@@ -18,16 +21,16 @@
     },
     "inputs": [
         {
-            "id": "TGI_SERVICE_URL",
-            "path": "env.TGI_INF_WORKFLOW_POSITIONAL_ARGS#TGI_SERVICE_URL",
-            "description": "The URL of the TGI service to connect to.",
+            "id": "TGI_INF_TOKEN",
+            "path": "env.TGI_INF_TOKEN",
+            "description": "The Hugging Face API token. Used for increased rate limits and access to private models.",
             "type": "string",
-            "required": true
+            "required": false
         },
         {
-            "id": "HF_TOKEN",
-            "path": "env.TGI_INF_WORKFLOW_POSITIONAL_ARGS#HF_TOKEN",
-            "description": "The Hugging Face API token.",
+            "id": "SERVICE_URL",
+            "path": "env.TGI_INF_WORKFLOW_POSITIONAL_ARGS#SERVICE_URL",
+            "description": "The URL of the TGI service to connect to.",
             "type": "string",
             "required": true
         },

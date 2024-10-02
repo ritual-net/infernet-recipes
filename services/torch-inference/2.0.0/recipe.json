@@ -1,0 +1,49 @@
+{
+    "config": {
+        "id": "torch-inference-2.0.0",
+        "image": "ritualnetwork/torch_inference_service:2.0.0",
+        "description": "PyTorch Inference Service",
+        "command": "--bind=0.0.0.0:3000 --workers=${NUM_WORKERS}",
+        "env": {},
+        "external": true,
+        "gpu": false,
+        "volumes": [],
+        "allowed_addresses": [],
+        "allowed_delegate_addresses": [],
+        "allowed_ips": [],
+        "accepted_payments": {},
+        "generates_proofs": false
+    },
+    "inputs": [
+        {
+            "id": "TORCH_DEFAULT_MODEL_ID",
+            "path": "env.TORCH_DEFAULT_MODEL_ID",
+            "description": "The default model to preload on startup.",
+            "type": "string",
+            "required": false
+        },
+        {
+            "id": "TORCH_CACHE_DIR",
+            "path": "env.TORCH_CACHE_DIR",
+            "description": "The directory to cache Torch models in.",
+            "type": "string",
+            "required": false
+        },
+        {
+            "id": "TORCH_USE_JIT",
+            "path": "env.TORCH_USE_JIT",
+            "description": "Whether to use JIT for model loading.",
+            "type": "string",
+            "required": false,
+            "default": "false"
+        },
+        {
+            "id": "NUM_WORKERS",
+            "path": "command#NUM_WORKERS",
+            "description": "The number of workers to use with the server.",
+            "type": "integer",
+            "required": false,
+            "default": 2
+        }
+    ]
+}

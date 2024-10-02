@@ -1,6 +1,6 @@
 {
   "config": {
-    "forward_stats": false,
+    "forward_stats": true,
     "manage_containers": true,
     "startup_wait": 1.0,
     "chain": {
