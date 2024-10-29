@@ -7,7 +7,7 @@
       "enabled": true,
       "trail_head_blocks": 3,
       "rpc_url": "https://ethereum-rpc.publicnode.com",
-      "registry_address": "0x3B1554f346DFe5c482Bb4BA31b880c1C18412170",
+      "registry_address": "0xa0113fC5967707bF44d33CF9611D66726c7449B5",
       "wallet": {
         "max_gas_limit": 5000000,
         "private_key": "",
