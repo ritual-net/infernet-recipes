@@ -2,7 +2,7 @@ version: '3'
 
 services:
   node:
-    image: ritualnetwork/infernet-node:1.3.1-gpu
+    image: ritualnetwork/infernet-node:1.4.0-gpu
     ports:
       - "0.0.0.0:4000:4000"
     volumes:
@@ -21,6 +21,7 @@ services:
             capabilities: [gpu]
     depends_on:
       - redis
+      - infernet-anvil
     restart:
       on-failure
     extra_hosts:
@@ -52,7 +53,16 @@ services:
       - network
     restart:
       on-failure
-
+      
+  infernet-anvil:
+    image: ritualnetwork/infernet-anvil:1.0.0
+    command: --host 0.0.0.0 --port 3000 --load-state infernet_deployed.json -b 1
+    ports:
+      - "8545:3000"
+    networks:
+      - network
+    container_name: infernet-anvil
+    
 networks:
   network:
 
